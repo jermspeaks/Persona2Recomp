@@ -1,0 +1,13 @@
+{
+  "$schema": "https://recomp.fyi/schema/v1.json",
+  "game": "Persona 2 Innocent Sin",
+  "system": "PS1",
+  "type": "recomp",
+  "toolchain": "psxrecomp",
+  "status": "exploring",
+  "project": "Persona 2 Innocent Sin Recomp",
+  "original": {
+    "region": "Japan",
+    "serial": "SLPS-02100"
+  }
+}

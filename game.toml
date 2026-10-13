@@ -1,0 +1,54 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
+[game]
+name = "Persona 2 Innocent Sin"
+id = "SLPS-02100"
+players = 1
+exe = "disc/SLPS_021.00"
+disc = "/Users/jeremywong/Downloads/Persona 2 - Tsumi ~ Innocent Sin (Japan) (v1.0) [En by Gemini v1.0a].cue"
+load_address = "0x80010000"
+entry_pc = "0x8003C9B0"
+text_size = "0x001BB000"
+stack_base = "0x801FFFF0"
+
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "Persona 2 - Tsumi ~ Innocent Sin (Japan) (v1.0) [En by Gemini v1.0a].bin"
+cue_name = "Persona 2 - Tsumi ~ Innocent Sin (Japan) (v1.0) [En by Gemini v1.0a].cue"
+boot_exe = "SLPS_021.00"
+known_sizes = [691925472]
+known_md5 = [
+  "11b188975894f2e4062ac773a9e9c153",
+]
+known_sha1 = [
+  "cd3521fab99346ada2f09391b1c415429fde2b1c",
+]
+known_crc32 = [
+  "870ceff9",
+]
+
+[recompiler]
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "generated"
+strict = true
+
+[runtime]
+window_title = "Persona 2 Innocent Sin Recompiled"
+memcard_dir = "saves"
+overlay_cache = true
+
+[video]
+renderer = "opengl"
+aspect_ratio = "4:3"
+
+[controller]
+default_mode = "digital"
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 1
+required_disc_fp = "e984f6c86740a5bc43d2e69523677cb139442ed8218a4c567a10f94cea775f18"
