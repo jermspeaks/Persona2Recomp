@@ -5,9 +5,9 @@
 # own compatible disc. This project has no static overlay profile; streamed
 # overlays are handled by the bundled runtime toolchain from the player's disc.
 #
-# Before publishing, resolve the missing project-level license noted in README.md
-# and review the rights applicable to generated/. `publish` defaults off so a
-# normal workflow dispatch cannot create a public release accidentally.
+# The root GPL scope is limited by LICENSES.md; generated/ is expressly excluded.
+# Review rights applicable to generated/ and dependency terms before publishing.
+# `publish` defaults off so dispatch cannot create a release accidentally.
 # Shared CI actions and packaging are maintained in the pinned psxrecomp submodule.
 # See psxrecomp/docs/ci/BUNDLED_RELEASES.md.
 
@@ -166,14 +166,17 @@ jobs:
           submodules: recursive
           fetch-depth: 1
 
-      - name: Require project license before publishing
+      - name: Require license scope notices before publishing
         if: needs.prepare.outputs.publish == 'true'
         shell: bash
         run: |
-          if [[ ! -s LICENSE ]]; then
-            echo "::error::Refusing to publish: add and review a root-level LICENSE first."
-            exit 1
-          fi
+          set -euo pipefail
+          for notice in LICENSE LICENSES.md GENERATED-CODE-NOTICE.md generated/README.md; do
+            if [[ ! -s "${notice}" ]]; then
+              echo "::error::Refusing to publish: required license notice ${notice} is missing."
+              exit 1
+            fi
+          done
 
       - name: Pin VERSION
         shell: bash
