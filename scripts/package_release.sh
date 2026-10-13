@@ -42,7 +42,7 @@ else
     "no disc at package time: the committed static AOT shard is compiled in and overlay_toolchain/ autocompiles the rest on the player's machine")
 fi
 # Extra docs shipped at the zip root (DISC.md tells players which dump works).
-for _doc in DISC.md; do
+for _doc in DISC.md LICENSE; do
   if [[ -f "${ROOT}/${_doc}" ]]; then
     EXTRA+=(--doc "${_doc}")
   fi
