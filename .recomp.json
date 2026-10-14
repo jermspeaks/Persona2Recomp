@@ -1,7 +1,9 @@
 {
   "$schema": "https://recomp.fyi/schema/v1.json",
   "game": "Persona 2 Innocent Sin",
+  "wikidata": "Q27791002",
   "system": "PS1",
+  "targets": ["Windows", "MacOS", "Linux", "Steam Deck"],
   "type": "recomp",
   "toolchain": "psxrecomp",
   "status": "in-progress",
